@@ -20,11 +20,11 @@ function createData(id, date, hour, table, duration, ppl) {
 }
 
 const rows = [
-  createData(1,'2019-02-24', '12:30', 1, 2, 2),
-  createData(2,'2019-02-24', '13:30', 1, 3, 2),
-  createData(3,'2019-02-25', '14:30', 2, 2, 3),
-  createData(4,'2019-02-25', '15:30', 3, 1, 4),
-  createData(5,'2019-02-26', '16:30', 4, 2, 1),
+  createData(1, '2019-02-24', '12:30', 1, 2, 2),
+  createData(2, '2019-02-24', '13:30', 1, 3, 2),
+  createData(3, '2019-02-25', '14:30', 2, 2, 3),
+  createData(4, '2019-02-25', '15:30', 3, 1, 4),
+  createData(5, '2019-02-26', '16:30', 4, 2, 1),
 ];
 
 const Homepage = () => {
@@ -47,7 +47,7 @@ const Homepage = () => {
             <ListItemText primary="8 ZAMÓWIEŃ LOKALNYCH" />
           </ListItem>
         </List>
-        <h2>Lista rezerwacji/eventów na dziś</h2>
+        <h2>Lista rezerwacji/eventów</h2>
         <TableContainer component={Paper}>
           <Table >
             <TableHead>

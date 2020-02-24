@@ -7,15 +7,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const demoContent = [
-  {id: '1', status: 'free', order: null},
-  {id: '2', status: 'thinking', order: null},
-  {id: '3', status: 'ordered', order: 123},
-  {id: '4', status: 'prepared', order: 234},
-  {id: '5', status: 'delivered', order: 345},
-  {id: '6', status: 'paid', order: 456},
+  { id: '1', status: 'free', order: null },
+  { id: '2', status: 'thinking', order: null },
+  { id: '3', status: 'ordered', order: 123 },
+  { id: '4', status: 'prepared', order: 234 },
+  { id: '5', status: 'delivered', order: 345 },
+  { id: '6', status: 'paid', order: 456 },
 ];
 
 const renderActions = status => {
