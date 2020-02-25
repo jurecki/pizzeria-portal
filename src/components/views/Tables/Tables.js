@@ -38,7 +38,16 @@ const Tables = () => {
 
     demoContentBooking.forEach((element) => {
       if ((hour >= element.hour && hourToNumber(hour) <= (hourToNumber(element.hour) + element.duration)) && table === element.table) {
-        link = <Link to={`${process.env.PUBLIC_URL}/tables/booking/${element.id}`}>Booked</Link>;
+        link = <Link to={{
+          pathname: `${process.env.PUBLIC_URL}/tables/booking/${element.id}`,
+          eventID: element.id,
+          eventDate: element.date,
+          eventHour: element.hour,
+          eventTable: element.table,
+          eventDuration: element.duration,
+          eventPpl: element.ppl,
+          eventStarters: element.starters,
+        }}>Booked</Link>;
       }
     });
 
@@ -50,7 +59,16 @@ const Tables = () => {
 
     demoContentEvent.forEach(element => {
       if ((hour >= element.hour && hourToNumber(hour) <= (hourToNumber(element.hour) + element.duration)) && table === element.table) {
-        link = <Link to={{ pathname: `${process.env.PUBLIC_URL}/tables/event/${element.id}`, eventHour: element.hour }}>Event</Link>;
+        link = <Link to={{
+          pathname: `${process.env.PUBLIC_URL}/tables/event/${element.id}`,
+          eventID: element.id,
+          eventDate: element.date,
+          eventHour: element.hour,
+          eventTable: element.table,
+          eventDuration: element.duration,
+          eventPpl: element.ppl,
+          eventStarters: element.starters,
+        }}>Event</Link>;
       }
     });
     return link;
