@@ -39,19 +39,19 @@ export const fetchFromAPI = () => {
 
 export const updateAPI = (id, status) => {
   return (dispatch, getState) => {
-    Axios
-      .get(`${api.url}/${api.tables}`)
-      .then(res => {
-        dispatch(updateTable(res.data.id, res.data.status));
-      })
-      .catch(err => {
-        dispatch(updateTable(err.message || true));
-      });
-
-    dispatch(fetchStarted());
+    dispatch(updateTable(id, status));
   };
 };
 
+const tableStatus = (status, tableOrder) => {
+  if(status === 'ordered') {
+    return '123';
+  } else if (status === 'free') {
+    return null;
+  } else {
+    return tableOrder;
+  }
+};
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
@@ -92,9 +92,10 @@ export default function reducer(statePart = [], action = {}) {
           error: false,
         },
         data: statePart.data.map(
-          (table, i) => i === action.payload.id ? {...table, status: action.payload.status} : table),
-      };
-    }
+          (table, i) => i === action.payload.id ? {...table, status: action.payload.status, order: tableStatus(action.payload.status, table.order)}
+            : table
+        ),
+      };}
     default:
       return statePart;
   }

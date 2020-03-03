@@ -16,7 +16,7 @@ class Waiter extends React.Component {
       PropTypes.array,
       PropTypes.object,
     ]),
-    updateTables: PropTypes.func,
+    updateTable: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
       error: PropTypes.node,
@@ -30,7 +30,8 @@ class Waiter extends React.Component {
 
   handlerOnClick = (id, status) => {
     console.log('status:', status,'table:', id);
-    this.props.updateTables(id, status);
+    this.props.updateTable(id, status);
+
   }
 
   renderActions(status, index){
@@ -39,12 +40,12 @@ class Waiter extends React.Component {
         return (
           <>
             <Button onClick={this.handlerOnClick.bind(this,index, 'thinking')}>thinking</Button>
-            <Button onClick={this.handlerOnClick.bind(this,index,'new order')}>new order</Button>
+            <Button onClick={this.handlerOnClick.bind(this,index,'ordered')}>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button onClick={this.handlerOnClick.bind(this,index,'new order')}>new order</Button>
+          <Button onClick={this.handlerOnClick.bind(this,index,'ordered')}>new order</Button>
         );
       case 'ordered':
         return (
