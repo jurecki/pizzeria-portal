@@ -19,7 +19,7 @@ const UPDATE_TABLE = createActionName('UPDATE_TABLE');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const updateTable = payload => ({ payload: {...payload, id: payload.id, status: payload.status}, type: UPDATE_TABLE});
+export const updateTable = (id, status) => ({ payload: {id, status}, type: UPDATE_TABLE});
 
 /* thunk creators */
 export const fetchFromAPI = () => {
@@ -37,9 +37,10 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const updateAPI = ({id, status}) => {
+export const updateAPI = (id, status) => {
   return (dispatch, getState) => {
-    dispatch(updateTable({id, status}));
+    dispatch(updateTable(id, status));
+
   };
 };
 
@@ -92,7 +93,7 @@ export default function reducer(statePart = [], action = {}) {
           error: false,
         },
         data: statePart.data.map(
-          (table, i) => i === action.payload.id ? {...table, status: action.payload.status, order: tableStatus(action.payload.status, table.order)}
+          (table, i) => (i+1) === action.payload.id ? {...table, status: action.payload.status, order: tableStatus(action.payload.status, table.order)}
             : table
         ),
       };}
