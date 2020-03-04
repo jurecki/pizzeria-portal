@@ -37,9 +37,9 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const updateAPI = (id, status) => {
+export const updateAPI = ({id, status}) => {
   return (dispatch, getState) => {
-    dispatch(updateTable(id, status));
+    dispatch(updateTable({id, status}));
   };
 };
 
