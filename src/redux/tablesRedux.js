@@ -19,7 +19,7 @@ const UPDATE_TABLE = createActionName('UPDATE_TABLE');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const updateTable = payload => ({payload, type: UPDATE_TABLE});
+export const updateTable = payload => ({ payload: {...payload, id: payload.id, status: payload.status}, type: UPDATE_TABLE});
 
 /* thunk creators */
 export const fetchFromAPI = () => {

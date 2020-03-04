@@ -28,9 +28,9 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  handlerOnClick = (id, status) => {
-    console.log('status:', status,'table:', id);
-    this.props.updateTable(id, status);
+  handlerOnClick = (number, newStatus) => {
+    console.log('status:', newStatus,'table:', number) ;
+    this.props.updateTable(number, newStatus);
 
   }
 
